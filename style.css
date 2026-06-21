@@ -617,3 +617,53 @@ main.show {
 
   cursor: pointer;
 }
+
+.gallerySwiper img,
+.giftSwiper img {
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.swiper-slide {
+  overflow: visible;
+}
+
+.image-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  background: rgba(0, 0, 0, 0.9);
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+.image-modal.active {
+  display: flex;
+}
+
+.image-modal img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.gallerySwiper img,
+.giftSwiper img {
+  cursor: pointer;
+}

@@ -81,41 +81,43 @@ setInterval(() => {
 /* CAROUSELS */
 
 new Swiper(".gallerySwiper", {
-
   loop: true,
-
-  autoplay: {
-    delay: 3000
-  },
-
-  slidesPerView: 1.2,
+  centeredSlides: true,
+  slidesPerView: 1,
   spaceBetween: 20,
 
-  breakpoints: {
+  preventClicks: false,
+  preventClicksPropagation: false,
 
+  autoplay: {
+    delay: 3000,
+  },
+
+  breakpoints: {
     768: {
-      slidesPerView: 1
-    }
-  }
+      slidesPerView: 3,
+    },
+  },
 });
 
 new Swiper(".giftSwiper", {
-
   loop: true,
-
-  autoplay: {
-    delay: 3500
-  },
-
-  slidesPerView: 1.2,
+  centeredSlides: true,
+  slidesPerView: 1,
   spaceBetween: 20,
 
-  breakpoints: {
+  preventClicks: false,
+  preventClicksPropagation: false,
 
+  autoplay: {
+    delay: 3500,
+  },
+
+  breakpoints: {
     768: {
-      slidesPerView: 1
-    }
-  }
+      slidesPerView: 3,
+    },
+  },
 });
 
 /* RSVP */
@@ -134,28 +136,56 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeBtn = document.querySelector(".lightbox-close");
 
-document
-  .querySelectorAll(".gallerySwiper img, .giftSwiper img")
-  .forEach((img) => {
+document.addEventListener("click", (e) => {
+  const img = e.target.closest(".gallerySwiper img, .giftSwiper img");
 
-    img.addEventListener("click", () => {
-      lightboxImg.src = img.src;
-      lightbox.classList.add("active");
-      document.body.style.overflow = "hidden";
-    });
+  if (!img) return;
 
-  });
+  lightboxImg.src = img.src;
+  lightbox.classList.add("active");
 
-closeBtn.addEventListener("click", () => {
-  lightbox.classList.remove("active");
-  document.body.style.overflow = "";
+  document.body.style.overflow = "hidden";
 });
 
+function closeLightbox() {
+  lightbox.classList.remove("active");
+  lightboxImg.src = "";
+  document.body.style.overflow = "";
+}
+
+closeBtn.addEventListener("click", closeLightbox);
+
 lightbox.addEventListener("click", (e) => {
-
   if (e.target === lightbox) {
-    lightbox.classList.remove("active");
-    document.body.style.overflow = "";
+    closeLightbox();
   }
+});
 
+const imageModal = document.getElementById("imageModal");
+const modalImage = document.getElementById("modalImage");
+const closeModal = document.querySelector(".close-modal");
+
+document.addEventListener("click", (e) => {
+  const img = e.target.closest(".gallerySwiper img, .giftSwiper img");
+
+  if (!img) return;
+
+  modalImage.src = img.src;
+  imageModal.classList.add("active");
+
+  document.body.style.overflow = "hidden";
+});
+
+function hideModal() {
+  imageModal.classList.remove("active");
+  modalImage.src = "";
+  document.body.style.overflow = "";
+}
+
+closeModal.addEventListener("click", hideModal);
+
+imageModal.addEventListener("click", (e) => {
+  if (e.target === imageModal) {
+    hideModal();
+  }
 });
