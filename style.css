@@ -1,0 +1,555 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  color: #6b2d4f;
+  background: linear-gradient(180deg, #ffd6e8, #ffeef6);
+}
+
+.hidden {
+  display: none;
+}
+
+/* CLOUDS */
+
+.cloud {
+  position: fixed;
+  width: 220px;
+  height: 70px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50px;
+  z-index: -1;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 90px;
+  height: 90px;
+  top: -40px;
+  left: 30px;
+}
+
+.cloud::after {
+  width: 110px;
+  height: 110px;
+  top: -50px;
+  right: 25px;
+}
+
+.cloud1 {
+  top: 10%;
+  animation: moveCloud 40s linear infinite;
+}
+
+.cloud2 {
+  top: 35%;
+  animation: moveCloud 60s linear infinite;
+}
+
+.cloud3 {
+  top: 65%;
+  animation: moveCloud 50s linear infinite;
+}
+
+@keyframes moveCloud {
+  from {
+    transform: translateX(-300px);
+  }
+
+  to {
+    transform: translateX(calc(100vw + 300px));
+  }
+}
+
+/* BALLOONS */
+
+.balloon {
+  position: fixed;
+  width: 70px;
+  height: 90px;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: .5;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 70px;
+  background: #d77ca6;
+  top: 90px;
+  left: 50%;
+}
+
+.balloon1 {
+  background: #ff9ec8;
+  left: 10%;
+  animation: floatBalloon 12s linear infinite;
+}
+
+.balloon2 {
+  background: #f7b4d2;
+  left: 50%;
+  animation: floatBalloon 16s linear infinite;
+}
+
+.balloon3 {
+  background: #ffcce1;
+  left: 85%;
+  animation: floatBalloon 14s linear infinite;
+}
+
+@keyframes floatBalloon {
+  from {
+    transform: translateY(100vh);
+  }
+
+  to {
+    transform: translateY(-150vh);
+  }
+}
+
+/* ENVELOPE */
+
+#welcomeScreen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.envelope {
+  position: relative;
+  width: 320px;
+  height: 220px;
+  background: #ff8fba;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 120px;
+  background: #ff72ab;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: 1s;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.letter {
+  position: absolute;
+  inset: 20px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #d44c88;
+}
+
+.letter h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+}
+
+/* MUSIC BUTTON */
+
+.music-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 55px;
+  height: 55px;
+  border: none;
+  border-radius: 50%;
+  background: #ff6ca9;
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* MAIN */
+
+main {
+  padding: 40px 20px 80px;
+}
+
+.hero {
+  text-align: center;
+}
+
+.hero-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-images img {
+  width: 180px;
+  max-width: 40vw;
+}
+
+.hero-text h1 {
+  font-family: 'Great Vibes', cursive;
+  color: #e33f87;
+  font-size: 4rem;
+}
+
+.hero-text h2 {
+  font-size: 6rem;
+  color: #ff5ea8;
+}
+
+#countdown {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.details-card,
+.story,
+.gallery,
+.gifts,
+.rsvp,
+.thankyou {
+  max-width: 900px;
+  margin: 40px auto;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 30px;
+}
+
+h2,
+h3 {
+  color: #e33f87;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.story p {
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+
+.swiper-slide img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.gift-note {
+  text-align: center;
+  margin-top: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input,
+select,
+textarea {
+  padding: 15px;
+  border: 2px solid #ffc4dd;
+  border-radius: 15px;
+  font-size: 1rem;
+}
+
+textarea {
+  height: 120px;
+}
+
+form button {
+  background: #ff6ca9;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.thankyou {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+
+  .hero-text h2 {
+    font-size: 4rem;
+  }
+
+  .hero-images img {
+    width: 140px;
+  }
+}
+
+body {
+  background: linear-gradient(180deg, #ffe4ef, #fff4f9);
+}
+
+.envelope-wrapper {
+  text-align: center;
+}
+
+.invite-text {
+  margin-top: 35px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1.5s ease forwards;
+}
+
+.invite-text h2 {
+  font-family: 'Tangerine', cursive;
+  font-size: 4rem;
+  color: #d93d87;
+}
+
+.invite-text p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.letter {
+  font-size: 3rem;
+  color: #d93d87;
+}
+
+.hero-text h1 {
+  font-family: 'Tangerine', cursive;
+  font-size: 5.5rem;
+  color: #d93d87;
+}
+
+.hero-text span {
+  display: block;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.hero-text h2 {
+  font-family: 'Cinzel', serif;
+}
+
+.story h2,
+.gallery h2,
+.gifts h2,
+.rsvp h2,
+.thankyou h2,
+.details-card h3 {
+  font-family: 'Tangerine', cursive;
+  font-size: 4rem;
+  color: #d93d87;
+}
+
+.story p,
+.thankyou p,
+.gift-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.9;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.detail-item i {
+  color: #d93d87;
+  font-size: 1.3rem;
+  margin-top: 3px;
+}
+
+.venue-image {
+  margin: 25px 0;
+}
+
+.venue-image img {
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  margin: auto;
+  border-radius: 24px;
+  border: 5px solid rgba(255,255,255,.8);
+  box-shadow: 0 15px 35px rgba(0,0,0,.08);
+}
+
+.dress-theme {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dress-theme > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pink-palette {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.pink-palette span {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.9);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.family-signature {
+  display: block;
+  margin-top: 20px;
+  font-family: 'Tangerine', cursive;
+  font-size: 3rem;
+  color: #d93d87;
+}
+
+.envelope {
+  transition:
+    transform 1.2s cubic-bezier(.22,1,.36,1),
+    opacity .8s ease;
+}
+
+.flap {
+  transition: transform 1.4s cubic-bezier(.22,1,.36,1);
+}
+
+main {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1.4s ease,
+    transform 1.4s ease;
+}
+
+main.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .invite-text h2 {
+    font-size: 3rem;
+  }
+
+  .hero-text h1 {
+    font-size: 4rem;
+  }
+
+  .story h2,
+  .gallery h2,
+  .gifts h2,
+  .rsvp h2,
+  .thankyou h2,
+  .details-card h3 {
+    font-size: 3rem;
+  }
+}
+#welcomeScreen {
+  transition: opacity .7s ease;
+}
+
+.gallerySwiper,
+.giftSwiper {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.gallerySwiper .swiper-slide,
+.giftSwiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallerySwiper img,
+.giftSwiper img {
+  width: 100%;
+  max-width: 320px;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+  border-radius: 24px;
+}
+
+.guest-note {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 35px 30px;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+
+  box-shadow: 0 15px 35px rgba(217, 61, 135, 0.1);
+
+  text-align: center;
+}
+
+.guest-note p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #5e4a56;
+  margin-bottom: 18px;
+}
+
+.guest-note p:last-child {
+  margin-bottom: 0;
+}
