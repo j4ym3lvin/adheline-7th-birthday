@@ -499,7 +499,7 @@ main.show {
   }
 }
 #welcomeScreen {
-  transition: opacity .7s ease;
+  transition: opacity .5s ease;
 }
 
 .gallerySwiper,
@@ -521,9 +521,8 @@ main.show {
   width: 100%;
   max-width: 320px;
   height: 450px;
-  object-fit: cover;
   display: block;
-  border-radius: 24px;
+  border-radius: 14px;
 }
 
 .guest-note {
